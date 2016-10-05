@@ -39,7 +39,6 @@
     <Compile Include="ArcadeFacebook.cs" />
     <Compile Include="ArcadeFacebookGameObject.cs" />
     <Compile Include="ArcadeFacebookLoader.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="FB.cs" />
     <Compile Include="IArcadeFacebook.cs" />
     <Compile Include="IArcadeFacebookImplementation.cs" />

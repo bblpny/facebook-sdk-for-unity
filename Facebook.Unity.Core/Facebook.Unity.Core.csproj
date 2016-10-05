@@ -37,7 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessToken.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="FacebookSdkVersion.cs" />
     <Compile Include="NativeDialogModes.cs" />

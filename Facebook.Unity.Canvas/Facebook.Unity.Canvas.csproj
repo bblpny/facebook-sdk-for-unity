@@ -41,7 +41,6 @@
     <Compile Include="CanvasFacebookGameObject.cs" />
     <Compile Include="CanvasFacebookLoader.cs" />
     <Compile Include="CanvasJSWrapper.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ICanvasFacebook.cs" />
     <Compile Include="ICanvasFacebookCallbackHandler.cs" />
     <Compile Include="ICanvasFacebookImplementation.cs" />

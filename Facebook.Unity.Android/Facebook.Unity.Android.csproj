@@ -40,7 +40,6 @@
     <Compile Include="AndroidFacebookGameObject.cs" />
     <Compile Include="AndroidFacebookLoader.cs" />
     <Compile Include="AndroidWrapper.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="FB.cs" />
     <Compile Include="IAndroidWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
