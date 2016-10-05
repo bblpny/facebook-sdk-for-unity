@@ -1,0 +1,1 @@
+This will be a custom version of the sdk that uses very little to no reflection to support all platforms.
