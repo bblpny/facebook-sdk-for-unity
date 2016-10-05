@@ -20,7 +20,7 @@
 
 namespace Facebook.Unity.Canvas
 {
-    internal interface ICanvasJSWrapper
+    public interface ICanvasJSWrapper
     {
         string GetSDKVersion();
 

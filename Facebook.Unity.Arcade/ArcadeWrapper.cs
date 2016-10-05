@@ -24,8 +24,9 @@ namespace Facebook.Unity.Arcade
     using System.Collections.Generic;
     using FacebookGames;
     using FacebookPlatformServiceClient;
+	using Internal;
 
-    internal class ArcadeWrapper : IArcadeWrapper
+    public class ArcadeWrapper : IArcadeWrapper
     {
         private const string PipeErrorMessage = @"Pipe name not passed to application on start.
  Make sure you are running inside the facebook games client.";
@@ -36,7 +37,7 @@ namespace Facebook.Unity.Arcade
         public ArcadeWrapper()
         {
             string pipeName;
-            Utilities.CommandLineArguments.TryGetValue("/pn", out pipeName);
+            CoreUtilities.CommandLineArguments.TryGetValue("/pn", out pipeName);
             if (pipeName == null)
             {
                 throw new InvalidOperationException(ArcadeWrapper.PipeErrorMessage);

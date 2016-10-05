@@ -18,7 +18,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Collections.Generic;
@@ -26,61 +26,16 @@ namespace Facebook.Unity
     using System.Linq;
     using System.Text;
 
-    internal static class Utilities
+    public static class Utilities
     {
         private const string WarningMissingParameter = "Did not find expected value '{0}' in dictionary";
-        private static Dictionary<string, string> commandLineArguments;
 
-        public delegate void Callback<T>(T obj);
-
-        public static Dictionary<string, string> CommandLineArguments
-        {
-            get
-            {
-                if (commandLineArguments != null)
-                {
-                    return commandLineArguments;
-                }
-
-                var localCommandLineArguments = new Dictionary<string, string>();
-                var arguments = Environment.GetCommandLineArgs();
-                for (int i = 0; i < arguments.Length; i++)
-                {
-                    if (arguments[i].StartsWith("/") || arguments[i].StartsWith("-"))
-                    {
-                        var value = i + 1 < arguments.Length ? arguments[i + 1] : null;
-                        localCommandLineArguments.Add(arguments[i], value);
-                    }
-                }
-
-                commandLineArguments = localCommandLineArguments;
-                return commandLineArguments;
-            }
-        }
-
-        public static bool TryGetValue<T>(
-            this IDictionary<string, object> dictionary,
-            string key,
-            out T value)
-        {
-            object resultObj;
-            if (dictionary.TryGetValue(key, out resultObj) && resultObj is T)
-            {
-                value = (T)resultObj;
-                return true;
-            }
-
-            value = default(T);
-            return false;
-        }
-
-        public static long TotalSeconds(this DateTime dateTime)
-        {
-            TimeSpan t = dateTime - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            long secondsSinceEpoch = (long)t.TotalSeconds;
-            return secondsSinceEpoch;
-        }
-
+		public delegate void Callback<T>(T obj);
+		/// <summary>
+		/// exposes the set accessor to AccessToken.CurrentAccessToken to Internal
+		/// </summary>
+		public static AccessToken CurrentAccessToken { get { return AccessToken.CurrentAccessToken; } set { AccessToken.CurrentAccessToken = value; } }
+				
         public static T GetValueOrDefault<T>(
             this IDictionary<string, object> dictionary,
             string key,
@@ -93,48 +48,6 @@ namespace Facebook.Unity
             }
 
             return result;
-        }
-
-        public static string ToCommaSeparateList(this IEnumerable<string> list)
-        {
-            if (list == null)
-            {
-                return string.Empty;
-            }
-
-            return string.Join(",", list.ToArray());
-        }
-
-        public static string AbsoluteUrlOrEmptyString(this Uri uri)
-        {
-            if (uri == null)
-            {
-                return string.Empty;
-            }
-
-            return uri.AbsoluteUri;
-        }
-
-        public static string GetUserAgent(string productName, string productVersion)
-        {
-            return string.Format(
-                CultureInfo.InvariantCulture,
-                "{0}/{1}",
-                productName,
-                productVersion);
-        }
-
-        public static string ToJson(this IDictionary<string, object> dictionary)
-        {
-            return MiniJSON.Json.Serialize(dictionary);
-        }
-
-        public static void AddAllKVPFrom<T1, T2>(this IDictionary<T1, T2> dest, IDictionary<T1, T2> source)
-        {
-            foreach (T1 key in source.Keys)
-            {
-                dest[key] = source[key];
-            }
         }
 
         public static AccessToken ParseAccessTokenFromResult(IDictionary<string, object> resultDictionary)
@@ -151,16 +64,6 @@ namespace Facebook.Unity
                 expiration,
                 permissions,
                 lastRefresh);
-        }
-
-        public static string ToStringNullOk(this object obj)
-        {
-            if (obj == null)
-            {
-                return "null";
-            }
-
-            return obj.ToString();
         }
 
         // Use this instead of reflection to avoid crashing at
@@ -256,6 +159,12 @@ namespace Facebook.Unity
         private static DateTime FromTimestamp(int timestamp)
         {
             return new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(timestamp);
-        }
-    }
+		}
+
+		public static string ToJson(this AccessToken token)
+		{
+			if (null == token) throw new System.NullReferenceException();
+			return token.ToJson(LoginResult.PermissionsKey, LoginResult.ExpirationTimestampKey, LoginResult.AccessTokenKey, LoginResult.UserIdKey, LoginResult.LastRefreshKey);
+		}
+	}
 }

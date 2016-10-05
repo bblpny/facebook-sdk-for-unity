@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Editor
 {
-    internal class EditorFacebookLoader : FB.CompiledFacebookLoader
+	using Internal;
+    public class EditorFacebookLoader : FB.CompiledFacebookLoader
     {
         protected override FacebookGameObject FBGameObject
         {

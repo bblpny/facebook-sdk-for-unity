@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Mobile
 {
-    internal interface IMobileFacebookResultHandler : IFacebookResultHandler
+	using Internal;
+    public interface IMobileFacebookResultHandler : IFacebookResultHandler
     {
         void OnAppInviteComplete(ResultContainer resultContainer);
 

@@ -21,8 +21,8 @@
 namespace Facebook.Unity.Canvas
 {
     using UnityEngine;
-
-    internal class CanvasJSWrapper : ICanvasJSWrapper
+	using Internal;
+    public class CanvasJSWrapper : ICanvasJSWrapper
     {
         public string GetSDKVersion()
         {

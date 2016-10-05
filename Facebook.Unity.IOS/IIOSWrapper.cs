@@ -20,7 +20,7 @@
 
 namespace Facebook.Unity.Mobile.IOS
 {
-    internal interface IIOSWrapper
+    public interface IIOSWrapper
     {
         void Init(
             string appId,

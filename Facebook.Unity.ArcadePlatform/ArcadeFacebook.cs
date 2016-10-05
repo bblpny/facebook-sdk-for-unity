@@ -20,11 +20,13 @@
 
 namespace Facebook.Unity.Arcade
 {
+	using Internal;
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+	using Utilities = Internal.CoreUtilities;
 
-    internal sealed class ArcadeFacebook : FacebookBase,
+    public sealed class ArcadeFacebook : FacebookBase,
     IArcadeFacebookImplementation
     {
         private string appId;

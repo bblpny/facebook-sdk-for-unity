@@ -18,12 +18,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections;
     using System.Collections.Generic;
 
-    internal abstract class MethodCall<T> where T : IResult
+    public abstract class MethodCall<T> where T : IResult
     {
         public MethodCall(FacebookBase facebookImpl, string methodName)
         {

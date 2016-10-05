@@ -18,11 +18,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections.Generic;
 
-    internal class AppLinkResult : ResultBase, IAppLinkResult
+    public sealed class AppLinkResult : ResultBase, IAppLinkResult
     {
         public AppLinkResult(ResultContainer resultContainer) : base(resultContainer)
         {

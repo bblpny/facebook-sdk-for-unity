@@ -18,13 +18,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections.Generic;
 
-    internal class ShareResult : ResultBase, IShareResult
+    public sealed class ShareResult : ResultBase, IShareResult
     {
-        internal ShareResult(ResultContainer resultContainer) : base(resultContainer)
+        public ShareResult(ResultContainer resultContainer) : base(resultContainer)
         {
             if (this.ResultDictionary != null)
             {

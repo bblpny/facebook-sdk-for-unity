@@ -22,7 +22,7 @@ namespace Facebook.Unity.Arcade
 {
     using System.Collections.Generic;
 
-    internal interface IArcadeWrapper
+    public interface IArcadeWrapper
     {
         IDictionary<string, object> PipeResponse { get; set; }
 

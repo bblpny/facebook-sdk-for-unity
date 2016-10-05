@@ -18,14 +18,14 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Collections.Generic;
 
-    internal class MethodArguments
+    public sealed class MethodArguments
     {
-        private IDictionary<string, object> arguments = new Dictionary<string, object>();
+        private readonly IDictionary<string, object> arguments;
 
         public MethodArguments() : this(new Dictionary<string, object>())
         {

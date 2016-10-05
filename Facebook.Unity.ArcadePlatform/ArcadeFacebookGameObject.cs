@@ -21,8 +21,8 @@
 namespace Facebook.Unity.Arcade
 {
     using System.Collections;
-
-    internal class ArcadeFacebookGameObject : FacebookGameObject, IFacebookCallbackHandler
+	using Internal;
+    public class ArcadeFacebookGameObject : FacebookGameObject, IFacebookCallbackHandler
     {
         protected IArcadeFacebookImplementation ArcadeFacebookImpl
         {

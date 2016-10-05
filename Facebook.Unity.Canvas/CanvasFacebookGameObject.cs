@@ -21,6 +21,7 @@
 namespace Facebook.Unity.Canvas
 {
     using UnityEngine;
+	using Internal;
 
     internal class CanvasFacebookGameObject : FacebookGameObject, ICanvasFacebookCallbackHandler
     {

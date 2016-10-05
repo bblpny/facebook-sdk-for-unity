@@ -21,8 +21,8 @@
 namespace Facebook.Unity.Editor
 {
     using Facebook.Unity.Editor.Dialogs;
-
-    internal class EditorWrapper : IEditorWrapper
+	using Internal;
+    public class EditorWrapper : IEditorWrapper
     {
         private IFacebookCallbackHandler callbackHandler;
 

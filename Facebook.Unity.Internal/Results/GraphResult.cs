@@ -18,12 +18,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections.Generic;
     using UnityEngine;
 
-    internal class GraphResult : ResultBase, IGraphResult
+    public sealed class GraphResult : ResultBase, IGraphResult
     {
         internal GraphResult(WWW result) : base(new ResultContainer(result.text), result.error, false)
         {

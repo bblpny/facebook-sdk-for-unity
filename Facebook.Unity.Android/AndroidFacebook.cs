@@ -20,12 +20,13 @@
 
 namespace Facebook.Unity.Mobile.Android
 {
+	using Internal;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
-    internal sealed class AndroidFacebook : MobileFacebook
+    internal sealed class AndroidFacebook : MobileFacebook, IMobileFacebook
     {
         public const string LoginPermissionsKey = "scope";
 
@@ -46,6 +47,7 @@ namespace Facebook.Unity.Mobile.Android
 
         // key Hash used for Android SDK
         public string KeyHash { get; private set; }
+		string IMobileFacebook.KeyHash { get { return this.KeyHash; } }
 
         public override bool LimitEventUsage
         {

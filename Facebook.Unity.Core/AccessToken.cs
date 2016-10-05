@@ -23,11 +23,11 @@ namespace Facebook.Unity
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+	using Internal;
     /// <summary>
     /// Contains the access token and related information.
     /// </summary>
-    public class AccessToken
+    public sealed class AccessToken
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AccessToken"/> class.
@@ -113,7 +113,7 @@ namespace Facebook.Unity
         /// <returns>A <see cref="System.String"/> that represents the current <see cref="Facebook.Unity.AccessToken"/>.</returns>
         public override string ToString()
         {
-            return Utilities.FormatToString(
+            return Internal.CoreUtilities.FormatToString(
                 null,
                 this.GetType().Name,
                 new Dictionary<string, string>()
@@ -125,16 +125,16 @@ namespace Facebook.Unity
                 });
         }
 
-        internal string ToJson()
+        internal string ToJson(string permissionsKey, string expirationTimestampKey, string accessTokenKey, string userIdKey, string lastRefreshKey)
         {
             var dictionary = new Dictionary<string, string>();
-            dictionary[LoginResult.PermissionsKey] = string.Join(",", this.Permissions.ToArray());
-            dictionary[LoginResult.ExpirationTimestampKey] = this.ExpirationTime.TotalSeconds().ToString();
-            dictionary[LoginResult.AccessTokenKey] = this.TokenString;
-            dictionary[LoginResult.UserIdKey] = this.UserId;
+            dictionary[permissionsKey] = string.Join(",", this.Permissions.ToArray());
+            dictionary[expirationTimestampKey] = this.ExpirationTime.TotalSeconds().ToString();
+            dictionary[accessTokenKey] = this.TokenString;
+            dictionary[userIdKey] = this.UserId;
             if (this.LastRefresh != null)
             {
-                dictionary[LoginResult.LastRefreshKey] = this.LastRefresh.Value.TotalSeconds().ToString();
+                dictionary[lastRefreshKey] = this.LastRefresh.Value.TotalSeconds().ToString();
             }
 
             return MiniJSON.Json.Serialize(dictionary);

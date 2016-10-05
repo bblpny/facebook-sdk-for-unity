@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Mobile.Android
 {
-    using UnityEngine;
+	using Internal;
+	using UnityEngine;
 
     internal class AndroidFacebookGameObject : MobileFacebookGameObject
     {

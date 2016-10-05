@@ -18,7 +18,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Collections;
@@ -28,7 +28,7 @@ namespace Facebook.Unity
     /*
      * A short lived async request that loads a FBResult from a url endpoint
      */
-    internal class AsyncRequestString : MonoBehaviour
+    public class AsyncRequestString : MonoBehaviour
     {
         private Uri url;
         private HttpMethod method;

@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Editor
 {
-    internal interface IEditorWrapper
+	using Internal;
+    public interface IEditorWrapper
     {
         void Init();
 

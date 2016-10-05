@@ -25,8 +25,10 @@ namespace Facebook.Unity.Canvas
     using System.Globalization;
     using System.IO;
     using System.Reflection;
+	using Internal;
+	using UnityEngine;
 
-    internal sealed class CanvasFacebook : FacebookBase, ICanvasFacebookImplementation
+    public sealed class CanvasFacebook : FacebookBase, ICanvasFacebookImplementation
     {
         internal const string MethodAppRequests = "apprequests";
         internal const string MethodFeed = "feed";
@@ -42,17 +44,34 @@ namespace Facebook.Unity.Canvas
 
         private string appId;
         private string appLinkUrl;
+		private string platformName;
         private ICanvasJSWrapper canvasJSWrapper;
         private HideUnityDelegate onHideUnityDelegate;
 
-        public CanvasFacebook()
-            : this(new CanvasJSWrapper(), new CallbackManager())
+		private static string DefaultPlatformName()
+		{
+			switch (Application.platform)
+			{
+				case RuntimePlatform.WebGLPlayer:
+					return "WebGL";
+#pragma warning disable
+				case RuntimePlatform.WindowsWebPlayer:
+				case RuntimePlatform.OSXWebPlayer:
+#pragma warning restore
+					return "WebPlayer";
+			}
+			return string.Empty;
+		}
+
+        public CanvasFacebook(string platformName = null)
+            : this(new CanvasJSWrapper(), new CallbackManager(), platformName)
         {
         }
 
-        public CanvasFacebook(ICanvasJSWrapper canvasJSWrapper, CallbackManager callbackManager)
+        public CanvasFacebook(ICanvasJSWrapper canvasJSWrapper, CallbackManager callbackManager, string platformName = null)
             : base(callbackManager)
         {
+			this.platformName = platformName ?? DefaultPlatformName();
             this.canvasJSWrapper = canvasJSWrapper;
         }
 
@@ -80,27 +99,24 @@ namespace Facebook.Unity.Canvas
             {
                 // We want to log whether we are running as webgl or in the web player.
                 string webPlatform;
-
-                switch (Constants.CurrentPlatform)
-                {
-                    case FacebookUnityPlatform.WebGL:
-                    case FacebookUnityPlatform.WebPlayer:
-                        webPlatform = string.Format(
-                            CultureInfo.InvariantCulture,
-                            "FBUnity{0}",
-                            Constants.CurrentPlatform.ToString());
-                        break;
-                    default:
-                        FacebookLogger.Warn("Currently running on uknown web platform");
-                        webPlatform = "FBUnityWebUnknown";
-                        break;
+				if( platformName.Length == 0)
+				{
+					FacebookLogger.Warn("Currently running on uknown web platform");
+					webPlatform = "FBUnityWebUnknown";
+				}
+                else
+				{
+					webPlatform = string.Format(
+                        CultureInfo.InvariantCulture,
+                        "FBUnity{0}",
+						platformName);
                 }
 
                 return string.Format(
                     CultureInfo.InvariantCulture,
                     "{0} {1}",
                     base.SDKUserAgent,
-                    Utilities.GetUserAgent(webPlatform, FacebookSdkVersion.Build));
+                    CoreUtilities.GetUserAgent(webPlatform, FacebookSdkVersion.Build));
             }
         }
 
@@ -116,13 +132,15 @@ namespace Facebook.Unity.Canvas
                 string javascriptSDKLocale,
                 bool loadDebugJSSDK,
                 HideUnityDelegate hideUnityDelegate,
-                InitDelegate onInitComplete)
+                InitDelegate onInitComplete,
+				string platformName = null)
         {
             base.Init(onInitComplete);
 
             this.canvasJSWrapper.ExternalEval(CanvasConstants.JSSDKBindings);
             this.appId = appId;
             this.onHideUnityDelegate = hideUnityDelegate;
+			this.platformName = platformName ?? this.platformName;
 
             MethodArguments parameters = new MethodArguments();
             parameters.AddString("appId", appId);
@@ -133,7 +151,7 @@ namespace Facebook.Unity.Canvas
             parameters.AddString("channelUrl", channelUrl);
             parameters.AddString("authResponse", authResponse);
             parameters.AddPrimative("frictionlessRequests", frictionlessRequests);
-            parameters.AddString("version", FB.GraphApiVersion);
+            parameters.AddString("version", InternalFB.GraphApiVersion);
 
             // use 1/0 for booleans, otherwise you'll get strings "True"/"False"
             this.canvasJSWrapper.ExternalCall(
@@ -393,7 +411,7 @@ namespace Facebook.Unity.Canvas
                 (formattedResponse) =>
                 {
                     var result = new LoginResult(formattedResponse);
-                    AccessToken.CurrentAccessToken = result.AccessToken;
+                    CoreUtilities.CurrentAccessToken = result.AccessToken;
                 });
         }
 
@@ -525,7 +543,7 @@ namespace Facebook.Unity.Canvas
 
                     callback(result);
                 };
-                FB.API(
+                InternalFB.API(
                     "me",
                     HttpMethod.GET,
                     apiCallback,

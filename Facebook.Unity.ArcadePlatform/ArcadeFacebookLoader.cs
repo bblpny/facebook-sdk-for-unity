@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Arcade
 {
-  internal class ArcadeFacebookLoader : FB.CompiledFacebookLoader
+	using Internal;
+  public class ArcadeFacebookLoader : FB.CompiledFacebookLoader
   {
     protected override FacebookGameObject FBGameObject
     {

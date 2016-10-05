@@ -18,15 +18,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections.Generic;
 
-    internal class PayResult : ResultBase, IPayResult
+    public sealed class PayResult : ResultBase, IPayResult
     {
         internal const long CancelPaymentFlowCode = 1383010;
 
-        internal PayResult(ResultContainer resultContainer) : base(resultContainer)
+        public PayResult(ResultContainer resultContainer) : base(resultContainer)
         {
             if (this.CanvasErrorCode != null && this.CanvasErrorCode.Value == PayResult.CancelPaymentFlowCode)
             {

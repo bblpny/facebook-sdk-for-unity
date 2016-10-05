@@ -20,14 +20,15 @@
 
 ﻿namespace Facebook.Unity.Mobile.Android
 {
-    using System;
+	using Internal;
+	using System;
     using System.Linq;
     using System.Reflection;
-
-    internal class AndroidWrapper : IAndroidWrapper
+	using UnityEngine;
+	internal class AndroidWrapper : IAndroidWrapper
 	{
-		private static UnityEngine.AndroidJavaClass androidJavaClassObject;
-		private static UnityEngine.AndroidJavaClass AndroidJavaClassObject
+		private static AndroidJavaClass androidJavaClassObject;
+		private static AndroidJavaClass AndroidJavaClassObject
 		{
 			get
 			{
@@ -36,7 +37,7 @@
 					return AndroidWrapper.androidJavaClassObject;
 				}
 
-				AndroidWrapper.androidJavaClassObject = new UnityEngine.AndroidJavaClass("com.facebook.unity.FB");
+				AndroidWrapper.androidJavaClassObject = new AndroidJavaClass("com.facebook.unity.FB");
 				return AndroidWrapper.androidJavaClassObject;
 			}
 		}

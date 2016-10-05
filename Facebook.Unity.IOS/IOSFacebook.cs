@@ -24,8 +24,8 @@ namespace Facebook.Unity.Mobile.IOS
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-
-    internal class IOSFacebook : MobileFacebook
+	using Internal;
+    public class IOSFacebook : MobileFacebook
     {
         private const string CancelledResponse = "{\"cancelled\":true}";
         private bool limitEventUsage;

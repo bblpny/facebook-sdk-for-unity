@@ -18,9 +18,9 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
-    internal class AppInviteResult : ResultBase, IAppInviteResult
+    public sealed class AppInviteResult : ResultBase, IAppInviteResult
     {
         public AppInviteResult(ResultContainer resultContainer) : base(resultContainer)
         {

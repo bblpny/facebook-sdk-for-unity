@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Arcade
 {
-    internal interface IArcadeFacebook : IPayFacebook, IFacebook
+	using Internal;
+    public interface IArcadeFacebook : IPayFacebook, IFacebook
     {
     }
 }

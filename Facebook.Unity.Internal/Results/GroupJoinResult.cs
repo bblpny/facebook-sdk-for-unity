@@ -18,11 +18,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
-    internal class GroupJoinResult : ResultBase, IGroupJoinResult
+    public sealed class GroupJoinResult : ResultBase, IGroupJoinResult
     {
-        internal GroupJoinResult(ResultContainer resultContainer) : base(resultContainer)
+        public GroupJoinResult(ResultContainer resultContainer) : base(resultContainer)
         {
         }
     }

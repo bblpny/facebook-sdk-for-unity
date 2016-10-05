@@ -20,13 +20,14 @@
 
 namespace Facebook.Unity.Mobile
 {
+	using Internal;
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Classes defined on the mobile sdks.
     /// </summary>
-    internal abstract class MobileFacebook : FacebookBase, IMobileFacebookImplementation
+    public abstract class MobileFacebook : FacebookBase, IMobileFacebookImplementation
     {
         private const string CallbackIdKey = "callback_id";
         private ShareDialogMode shareDialogMode = ShareDialogMode.AUTOMATIC;
@@ -52,6 +53,8 @@ namespace Facebook.Unity.Mobile
                 this.SetShareDialogMode(this.shareDialogMode);
             }
         }
+		
+		string IMobileFacebook.KeyHash { get { return string.Empty; } }
 
         public abstract void AppInvite(
             Uri appLinkUrl,
@@ -117,7 +120,7 @@ namespace Facebook.Unity.Mobile
             var result = new AccessTokenRefreshResult(resultContainer);
             if (result.AccessToken != null)
             {
-                AccessToken.CurrentAccessToken = result.AccessToken;
+                Utilities.CurrentAccessToken = result.AccessToken;
             }
 
             CallbackManager.OnFacebookResponse(result);

@@ -18,9 +18,9 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
-    internal interface IInternalResult : IResult
+    public interface IInternalResult : IResult
     {
         /// <summary>
         /// Gets the callback identifier.

@@ -18,11 +18,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections.Generic;
 
-    internal interface IFacebookResultHandler
+    public interface IFacebookResultHandler
     {
         void OnInitComplete(ResultContainer resultContainer);
 

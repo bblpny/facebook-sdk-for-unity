@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Mobile.IOS
 {
-    internal class IOSFacebookLoader : FB.CompiledFacebookLoader
+	using Internal;
+    public class IOSFacebookLoader : FB.CompiledFacebookLoader
     {
         protected override FacebookGameObject FBGameObject
         {

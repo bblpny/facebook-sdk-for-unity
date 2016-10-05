@@ -21,8 +21,9 @@
 namespace Facebook.Unity.Canvas
 {
     using UnityEngine;
+	using Internal;
 
-    internal class JsBridge : MonoBehaviour
+    public class JsBridge : MonoBehaviour
     {
         private ICanvasFacebookCallbackHandler facebook;
 

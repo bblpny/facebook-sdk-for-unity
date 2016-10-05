@@ -18,33 +18,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using UnityEngine;
 
-    /// <summary>
-    /// Init delegate.
-    /// </summary>
-    public delegate void InitDelegate();
-
-    /// <summary>
-    /// Facebook delegate.
-    /// </summary>
-    /// <param name="result">The result.</param>
-    /// <typeparam name="T">The result type.</typeparam>
-    public delegate void FacebookDelegate<T>(T result) where T : IResult;
-
-    /// <summary>
-    /// Hide unity delegate.
-    /// </summary>
-    /// <param name="isUnityShown">When called with its sole argument set to false,
-    /// your game should pause and prepare to lose focus. If it's called with its
-    /// argument set to true, your game should prepare to regain focus and resume
-    /// play. Your game should check whether it is in fullscreen mode when it resumes,
-    /// and offer the player a chance to go to fullscreen mode if appropriate.</param>
-    public delegate void HideUnityDelegate(bool isUnityShown);
-
-    internal abstract class FacebookGameObject : MonoBehaviour, IFacebookCallbackHandler
+    public abstract class FacebookGameObject : MonoBehaviour, IFacebookCallbackHandler
     {
         public IFacebookImplementation Facebook { get; set; }
 

@@ -18,12 +18,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Collections.Generic;
 
-    internal class ResultContainer
+    public sealed class ResultContainer
     {
         private const string CanvasResponseKey = "response";
 
@@ -33,7 +33,7 @@ namespace Facebook.Unity
             this.ResultDictionary = dictionary;
             if (Constants.IsWeb)
             {
-                this.ResultDictionary = this.GetWebFormattedResponseDictionary(this.ResultDictionary);
+                this.ResultDictionary = ResultContainer.GetWebFormattedResponseDictionary(this.ResultDictionary);
             }
         }
 
@@ -55,7 +55,7 @@ namespace Facebook.Unity
                 {
                     // Web has a different format from mobile so reformat the result to match our
                     // mobile responses
-                    this.ResultDictionary = this.GetWebFormattedResponseDictionary(this.ResultDictionary);
+                    this.ResultDictionary = ResultContainer.GetWebFormattedResponseDictionary(this.ResultDictionary);
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace Facebook.Unity
 
         public IDictionary<string, object> ResultDictionary { get; set; }
 
-        private IDictionary<string, object> GetWebFormattedResponseDictionary(IDictionary<string, object> resultDictionary)
+        private static IDictionary<string, object> GetWebFormattedResponseDictionary(IDictionary<string, object> resultDictionary)
         {
             IDictionary<string, object> responseDictionary;
             if (resultDictionary.TryGetValue(CanvasResponseKey, out responseDictionary))

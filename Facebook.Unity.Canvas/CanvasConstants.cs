@@ -20,7 +20,7 @@
 
 namespace Facebook.Unity.Canvas
 {
-    internal static class CanvasConstants
+    public static class CanvasConstants
     {
         // Normally we would embed this into the dll but embedded
         // resources don't work in unity so for now leave this as

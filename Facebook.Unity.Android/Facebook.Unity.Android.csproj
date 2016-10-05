@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>848d9900-ac3e-462c-90ca-4885616a3675</ProjectGuid>
+    <ProjectGuid>{848D9900-AC3E-462C-90CA-4885616A3675}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Facebook.Unity.Android</RootNamespace>
@@ -30,20 +30,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\bblpny\tools\Extern\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndroidFacebook.cs" />
+    <Compile Include="AndroidFacebookGameObject.cs" />
+    <Compile Include="AndroidFacebookLoader.cs" />
+    <Compile Include="AndroidWrapper.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="FB.cs" />
+    <Compile Include="IAndroidWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Facebook.Unity.Core\Facebook.Unity.Core.csproj">
+      <Project>{abdb0b6f-fc6f-48ca-889f-ebe739f76c2b}</Project>
+      <Name>Facebook.Unity.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facebook.Unity.Internal\Facebook.Unity.Internal.csproj">
+      <Project>{189bd69e-c3bb-49f6-90dc-d4c3bef85208}</Project>
+      <Name>Facebook.Unity.Internal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facebook.Unity.Mobile\Facebook.Unity.Mobile.csproj">
+      <Project>{303d4910-d1b0-471a-bfb5-364ecae6f2a9}</Project>
+      <Name>Facebook.Unity.Mobile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facebook.Unity\Facebook.Unity.csproj">
+      <Project>{3dff6c0c-bb04-405d-a23f-95999630e7f8}</Project>
+      <Name>Facebook.Unity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -53,5 +71,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>

@@ -18,12 +18,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Collections.Generic;
 
-    internal abstract class ResultBase : IInternalResult
+    public abstract class ResultBase : IInternalResult
     {
         internal const long CancelDialogCode = 4201;
         internal const string ErrorCodeKey = "error_code";

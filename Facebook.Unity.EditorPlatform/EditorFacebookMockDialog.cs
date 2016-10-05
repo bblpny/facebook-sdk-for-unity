@@ -22,8 +22,8 @@ namespace Facebook.Unity.Editor
 {
     using System.Collections.Generic;
     using UnityEngine;
-
-    internal abstract class EditorFacebookMockDialog : MonoBehaviour
+	using Internal;
+    public abstract class EditorFacebookMockDialog : MonoBehaviour
     {
         private Rect modalRect;
         private GUIStyle modalStyle;

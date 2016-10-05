@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>189bd69e-c3bb-49f6-90dc-d4c3bef85208</ProjectGuid>
+    <ProjectGuid>{189BD69E-C3BB-49F6-90DC-D4C3BEF85208}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Facebook.Unity.Internal</RootNamespace>
@@ -30,20 +30,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Xml"/>
+    <Compile Include="CallbackManager.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="ComponentFactory.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="FacebookBase.cs" />
+    <Compile Include="FacebookGameObject.cs" />
+    <Compile Include="FacebookUnityPlatform.cs" />
+    <Compile Include="IFacebookPlatform.cs" />
+    <Compile Include="IMobileFacebook.cs" />
+    <Compile Include="InternalFB.cs" />
+    <Compile Include="IFacebook.cs" />
+    <Compile Include="IFacebookCallbackHandler.cs" />
+    <Compile Include="IFacebookImplementation.cs" />
+    <Compile Include="IFacebookResultHandler.cs" />
+    <Compile Include="IPayFacebook.cs" />
+    <Compile Include="MethodArguments.cs" />
+    <Compile Include="MethodCall.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\AccessTokenRefreshResult.cs" />
+    <Compile Include="Results\AppInviteResult.cs" />
+    <Compile Include="Results\AppLinkResult.cs" />
+    <Compile Include="Results\AppReqeustResult.cs" />
+    <Compile Include="Results\GraphResult.cs" />
+    <Compile Include="Results\GroupCreateResult.cs" />
+    <Compile Include="Results\GroupJoinResult.cs" />
+    <Compile Include="Results\IInternalResult.cs" />
+    <Compile Include="Results\LoginResult.cs" />
+    <Compile Include="Results\PayResult.cs" />
+    <Compile Include="Results\ResultBase.cs" />
+    <Compile Include="Results\ResultContainer.cs" />
+    <Compile Include="Results\ShareResult.cs" />
+    <Compile Include="Utils\AsyncRequestString.cs" />
+    <Compile Include="Utils\FacebookLogger.cs" />
+    <Compile Include="Utils\IFacebookLogger.cs" />
+    <Compile Include="Utils\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\Facebook.Unity.Core\Facebook.Unity.Core.csproj">
+      <Project>{abdb0b6f-fc6f-48ca-889f-ebe739f76c2b}</Project>
+      <Name>Facebook.Unity.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\bblpny\tools\Extern\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -53,5 +86,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>

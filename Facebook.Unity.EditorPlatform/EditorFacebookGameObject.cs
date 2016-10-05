@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Editor
 {
-    internal class EditorFacebookGameObject : FacebookGameObject
+	using Internal;
+    public class EditorFacebookGameObject : FacebookGameObject
     {
     }
 }

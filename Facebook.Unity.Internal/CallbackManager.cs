@@ -18,12 +18,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Collections.Generic;
 
-    internal class CallbackManager
+    public sealed class CallbackManager
     {
         private IDictionary<string, object> facebookDelegates = new Dictionary<string, object>();
         private int nextAsyncId;

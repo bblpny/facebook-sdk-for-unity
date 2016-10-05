@@ -18,11 +18,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections.Generic;
 
-    internal class AppRequestResult : ResultBase, IAppRequestResult
+    public sealed class AppRequestResult : ResultBase, IAppRequestResult
     {
         public const string RequestIDKey = "request";
         public const string ToKey = "to";

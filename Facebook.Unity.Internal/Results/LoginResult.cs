@@ -18,19 +18,19 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections.Generic;
 
-    internal class LoginResult : ResultBase, ILoginResult
-    {
-        public const string LastRefreshKey = "last_refresh";
-        public static readonly string UserIdKey = Constants.IsWeb ? "userID" : "user_id";
-        public static readonly string ExpirationTimestampKey = Constants.IsWeb ? "expiresIn" : "expiration_timestamp";
-        public static readonly string PermissionsKey = Constants.IsWeb ? "grantedScopes" : "permissions";
-        public static readonly string AccessTokenKey = Constants.IsWeb ? "accessToken" : Constants.AccessTokenKey;
+	public sealed class LoginResult : ResultBase, ILoginResult
+	{
+		public const string LastRefreshKey = "last_refresh";
+        public static string UserIdKey { get { return Constants.IsWeb ? "userID" : "user_id"; } }
+        public static string ExpirationTimestampKey { get { return Constants.IsWeb ? "expiresIn" : "expiration_timestamp"; } }
+        public static string PermissionsKey { get { return Constants.IsWeb ? "grantedScopes" : "permissions"; } }
+        public static string AccessTokenKey { get { return Constants.IsWeb ? "accessToken" : Constants.AccessTokenKey; } }
 
-        internal LoginResult(ResultContainer resultContainer) : base(resultContainer)
+        public LoginResult(ResultContainer resultContainer) : base(resultContainer)
         {
             if (this.ResultDictionary != null && this.ResultDictionary.ContainsKey(LoginResult.AccessTokenKey))
             {

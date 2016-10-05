@@ -18,13 +18,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Globalization;
     using UnityEngine;
-
-    internal static class Constants
+	using FB = InternalFB;
+    public static class Constants
     {
         // Callback keys
         public const string CallbackIdKey = "callback_id";
@@ -91,8 +91,7 @@ namespace Facebook.Unity
         {
             get
             {
-                return Constants.CurrentPlatform == FacebookUnityPlatform.Android ||
-                    Constants.CurrentPlatform == FacebookUnityPlatform.IOS;
+                return 0 != (Constants.CurrentPlatform.options & FacebookUnityPlatform.Options.IsMobile);
             }
         }
 
@@ -107,18 +106,17 @@ namespace Facebook.Unity
         public static bool IsWeb
         {
             get
-            {
-                return Constants.CurrentPlatform == FacebookUnityPlatform.WebGL ||
-                    Constants.CurrentPlatform == FacebookUnityPlatform.WebPlayer;
-            }
+			{
+				return 0 != (Constants.CurrentPlatform.options & FacebookUnityPlatform.Options.IsWeb);
+			}
         }
 
         public static bool IsArcade
         {
             get
-            {
-                return Constants.CurrentPlatform == FacebookUnityPlatform.Arcade;
-            }
+			{
+				return 0 != (Constants.CurrentPlatform.options & FacebookUnityPlatform.Options.IsArcade);
+			}
         }
 
         /// <summary>
@@ -144,7 +142,7 @@ namespace Facebook.Unity
         {
             get
             {
-                return Utilities.GetUserAgent("FBUnitySDK", FacebookSdkVersion.Build);
+                return CoreUtilities.GetUserAgent("FBUnitySDK", FacebookSdkVersion.Build);
             }
         }
 
@@ -160,12 +158,7 @@ namespace Facebook.Unity
         {
             get
             {
-                if (!Constants.currentPlatform.HasValue)
-                {
-                    Constants.currentPlatform = Constants.GetCurrentPlatform();
-                }
-
-                return Constants.currentPlatform.Value;
+				return Constants.currentPlatform ?? Constants.GetCurrentPlatform();
             }
 
             set
@@ -182,9 +175,11 @@ namespace Facebook.Unity
                     return FacebookUnityPlatform.Android;
                 case RuntimePlatform.IPhonePlayer:
                     return FacebookUnityPlatform.IOS;
-                case RuntimePlatform.WindowsWebPlayer:
+#pragma warning disable 0618
+				case RuntimePlatform.WindowsWebPlayer:
                 case RuntimePlatform.OSXWebPlayer:
-                    return FacebookUnityPlatform.WebPlayer;
+#pragma warning restore 0618
+					return FacebookUnityPlatform.WebPlayer;
                 case RuntimePlatform.WebGLPlayer:
                     return FacebookUnityPlatform.WebGL;
                 case RuntimePlatform.WindowsPlayer:

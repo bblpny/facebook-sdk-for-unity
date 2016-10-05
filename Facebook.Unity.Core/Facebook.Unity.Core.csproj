@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>abdb0b6f-fc6f-48ca-889f-ebe739f76c2b</ProjectGuid>
+    <ProjectGuid>{ABDB0B6F-FC6F-48CA-889F-EBE739F76C2B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Facebook.Unity.Core</RootNamespace>
@@ -30,20 +30,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\bblpny\tools\Extern\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessToken.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="FacebookSdkVersion.cs" />
+    <Compile Include="NativeDialogModes.cs" />
+    <Compile Include="OGActionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\IAccessTokenRefreshResult.cs" />
+    <Compile Include="Results\IAppInviteResult.cs" />
+    <Compile Include="Results\IAppLinkResult.cs" />
+    <Compile Include="Results\IAppRequestResult.cs" />
+    <Compile Include="Results\IGraphResult.cs" />
+    <Compile Include="Results\IGroupCreateResult.cs" />
+    <Compile Include="Results\IGroupJoinResult.cs" />
+    <Compile Include="Results\ILoginResult.cs" />
+    <Compile Include="Results\IPayResult.cs" />
+    <Compile Include="Results\IResult.cs" />
+    <Compile Include="Results\IShareResult.cs" />
+    <Compile Include="Utils\CoreUtilities.cs" />
+    <Compile Include="Utils\HttpMethod.cs" />
+    <Compile Include="Utils\MiniJson.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -53,5 +66,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>

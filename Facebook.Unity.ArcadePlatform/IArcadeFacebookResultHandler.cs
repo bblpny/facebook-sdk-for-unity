@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Arcade
 {
-  internal interface IArcadeFacebookResultHandler : IFacebookResultHandler
+	using Internal;
+  public interface IArcadeFacebookResultHandler : IFacebookResultHandler
   {
   }
 }

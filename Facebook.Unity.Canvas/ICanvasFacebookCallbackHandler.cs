@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Canvas
 {
-    internal interface ICanvasFacebookCallbackHandler : IFacebookCallbackHandler
+	using Internal;
+    public interface ICanvasFacebookCallbackHandler : IFacebookCallbackHandler
     {
         void OnPayComplete(string message);
 

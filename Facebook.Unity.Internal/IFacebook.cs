@@ -18,13 +18,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Collections.Generic;
-    using UnityEngine;
+	using UnityEngine;
 
-    internal interface IFacebook
+    public interface IFacebook
     {
         bool LoggedIn { get; }
 

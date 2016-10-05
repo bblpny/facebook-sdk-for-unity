@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
  *
  * You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
@@ -18,23 +18,35 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity.Mobile
+namespace Facebook.Unity
 {
-    using System;
+	using Internal;
+	using WebPlayer;
+	using System;
+	using UnityEngine;
 
-    internal interface IMobileFacebook : IFacebook
-    {
-        ShareDialogMode ShareDialogMode { get; set; }
+	public sealed class FB : Implementation.FB<Platform>
+	{
+	}
 
-        void AppInvite(
-            Uri appLinkUrl,
-            Uri previewImageUrl,
-            FacebookDelegate<IAppInviteResult> callback);
+	namespace WebPlayer
+	{
+		using Canvas;
 
-        void FetchDeferredAppLink(
-            FacebookDelegate<IAppLinkResult> callback);
+		public struct Platform : IFacebookPlatform
+		{
+			UnityEngine.Object IFacebookPlatform.GetLoader()
+			{
+				return ComponentFactory.GetComponent<CanvasFacebookLoader>();
+			}
 
-        void RefreshCurrentAccessToken(
-            FacebookDelegate<IAccessTokenRefreshResult> callback);
-    }
+			OnDLLLoaded IFacebookPlatform.Install(string appId, bool cookie, bool logging, bool status, bool xfbml, bool frictionlessRequests, string authResponse, string javascriptSDKLocale, HideUnityDelegate onHideUnity, InitDelegate onInitComplete)
+			{
+				return delegate (IFacebook facebook)
+				{
+					((CanvasFacebook)facebook).Init(appId, cookie, logging, status, xfbml, FacebookSettings.ChannelUrl, authResponse, frictionlessRequests, javascriptSDKLocale, Constants.DebugMode, onHideUnity, onInitComplete, "WebPlayer");
+				};
+			}
+		}
+	}
 }

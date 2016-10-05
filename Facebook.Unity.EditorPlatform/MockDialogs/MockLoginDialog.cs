@@ -23,8 +23,8 @@ namespace Facebook.Unity.Editor.Dialogs
     using System;
     using System.Collections.Generic;
     using UnityEngine;
-
-    internal class MockLoginDialog : EditorFacebookMockDialog
+	using Internal;
+    public class MockLoginDialog : EditorFacebookMockDialog
     {
         private string accessToken = string.Empty;
 
@@ -102,7 +102,7 @@ namespace Facebook.Unity.Editor.Dialogs
                     }
 
                     // Create Access Token
-                    var newToken = new AccessToken(
+                    var newToken = CoreUtilities.CreateAccessToken(
                         this.accessToken,
                         facebookID,
                         DateTime.UtcNow.AddDays(60),

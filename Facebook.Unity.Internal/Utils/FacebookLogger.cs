@@ -18,11 +18,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using UnityEngine;
 
-    internal static class FacebookLogger
+    public static class FacebookLogger
     {
         static FacebookLogger()
         {

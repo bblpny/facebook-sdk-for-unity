@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -32,10 +32,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="UnityEditor">
-      <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
+      <HintPath>..\..\..\bblpny\tools\Extern\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\bblpny\tools\Extern\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -68,6 +68,10 @@
     <None Include="iOS\PListParser.cs.meta" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Facebook.Unity.Core\Facebook.Unity.Core.csproj">
+      <Project>{abdb0b6f-fc6f-48ca-889f-ebe739f76c2b}</Project>
+      <Name>Facebook.Unity.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Facebook.Unity\Facebook.Unity.csproj">
       <Project>{3DFF6C0C-BB04-405D-A23F-95999630E7F8}</Project>
       <Name>Facebook.Unity</Name>
@@ -76,7 +80,5 @@
   <ItemGroup>
     <EmbeddedResource Include="android\DefaultAndroidManifest.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

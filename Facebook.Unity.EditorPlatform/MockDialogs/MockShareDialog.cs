@@ -22,8 +22,8 @@ namespace Facebook.Unity.Editor.Dialogs
 {
     using System.Collections.Generic;
     using System.Text;
-
-    internal class MockShareDialog : EditorFacebookMockDialog
+	using Internal;
+    public class MockShareDialog : EditorFacebookMockDialog
     {
         public string SubTitle { private get; set; }
 

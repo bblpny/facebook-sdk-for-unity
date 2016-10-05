@@ -18,17 +18,17 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using UnityEngine;
 
-    internal class ComponentFactory
+    public sealed class ComponentFactory
     {
         public const string GameObjectName = "UnityFacebookSDKPlugin";
 
         private static GameObject facebookGameObject;
 
-        internal enum IfNotExist
+        public enum IfNotExist
         {
             AddNew,
             ReturnNull

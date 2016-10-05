@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -42,14 +42,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Properties\" />
-    <Folder Include="Plugins\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Plugins\FacebookNamedPipeClient.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Facebook.Unity.ArcadePlatform\Facebook.Unity.ArcadePlatform.csproj">
+      <Project>{dc08e1cd-7196-4a9b-a0d8-aee658176582}</Project>
+      <Name>Facebook.Unity.ArcadePlatform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facebook.Unity.Core\Facebook.Unity.Core.csproj">
+      <Project>{abdb0b6f-fc6f-48ca-889f-ebe739f76c2b}</Project>
+      <Name>Facebook.Unity.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facebook.Unity.Internal\Facebook.Unity.Internal.csproj">
+      <Project>{189bd69e-c3bb-49f6-90dc-d4c3bef85208}</Project>
+      <Name>Facebook.Unity.Internal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Facebook.Unity\Facebook.Unity.csproj">
       <Project>{3DFF6C0C-BB04-405D-A23F-95999630E7F8}</Project>
       <Name>Facebook.Unity</Name>

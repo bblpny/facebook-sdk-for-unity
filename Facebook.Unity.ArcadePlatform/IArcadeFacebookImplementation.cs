@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Arcade
 {
-    internal interface IArcadeFacebookImplementation : IArcadeFacebook, IArcadeFacebookResultHandler
+	using Internal;
+    public interface IArcadeFacebookImplementation : IArcadeFacebook, IArcadeFacebookResultHandler
     {
         bool HaveReceivedPipeResponse();
 

@@ -20,7 +20,7 @@
 
 namespace Facebook.Unity.Canvas
 {
-    internal interface ICanvasFacebookImplementation : ICanvasFacebook, ICanvasFacebookResultHandler
+    public interface ICanvasFacebookImplementation : ICanvasFacebook, ICanvasFacebookResultHandler
     {
     }
 }

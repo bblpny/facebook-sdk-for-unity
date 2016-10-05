@@ -22,8 +22,8 @@ namespace Facebook.Unity.Canvas
 {
     using System;
     using Facebook.Unity;
-
-    internal interface ICanvasFacebookResultHandler : IFacebookResultHandler
+	using Internal;
+    public interface ICanvasFacebookResultHandler : IFacebookResultHandler
     {
         void OnPayComplete(ResultContainer resultContainer);
 

@@ -22,11 +22,12 @@ namespace Facebook.Unity.Editor
 {
     using System;
     using System.Collections.Generic;
-    using Facebook.Unity.Canvas;
+	using Facebook.Unity.Internal;
+	using Facebook.Unity.Canvas;
     using Facebook.Unity.Editor.Dialogs;
     using Facebook.Unity.Mobile;
 
-    internal class EditorFacebook : FacebookBase, IMobileFacebookImplementation, ICanvasFacebookImplementation
+    public class EditorFacebook : FacebookBase, IMobileFacebookImplementation, ICanvasFacebookImplementation
     {
         private const string WarningMessage = "You are using the facebook SDK in the Unity Editor. " +
             "Behavior may not be the same as when used on iOS, Android, or Web.";
@@ -47,6 +48,8 @@ namespace Facebook.Unity.Editor
         public override bool LimitEventUsage { get; set; }
 
         public ShareDialogMode ShareDialogMode { get; set; }
+
+		public string KeyHash { get { return string.Empty; } }
 
         public override string SDKName
         {

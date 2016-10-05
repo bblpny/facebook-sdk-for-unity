@@ -18,14 +18,14 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using UnityEngine;
 
-    internal abstract class FacebookBase : IFacebookImplementation
+    public abstract class FacebookBase : IFacebookImplementation
     {
         private InitDelegate onInitCompleteDelegate;
 
@@ -44,7 +44,7 @@ namespace Facebook.Unity
         {
             get
             {
-                return Utilities.GetUserAgent(this.SDKName, this.SDKVersion);
+                return CoreUtilities.GetUserAgent(this.SDKName, this.SDKVersion);
             }
         }
 
@@ -134,7 +134,7 @@ namespace Facebook.Unity
             if (!inputFormData.ContainsKey(Constants.AccessTokenKey) && !query.Contains("access_token="))
             {
                 inputFormData[Constants.AccessTokenKey] =
-                    FB.IsLoggedIn ? AccessToken.CurrentAccessToken.TokenString : string.Empty;
+                    InternalFB.IsLoggedIn ? AccessToken.CurrentAccessToken.TokenString : string.Empty;
             }
 
             AsyncRequestString.Request(this.GetGraphUrl(query), method, inputFormData, callback);

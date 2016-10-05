@@ -20,7 +20,8 @@
 
 namespace Facebook.Unity.Canvas
 {
-    internal interface ICanvasFacebook : IPayFacebook, IFacebook
+	using Internal;
+    public interface ICanvasFacebook : IPayFacebook, IFacebook
     {
     }
 }

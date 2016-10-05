@@ -18,11 +18,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Facebook.Unity
+namespace Facebook.Unity.Internal
 {
     using System.Collections.Generic;
 
-    internal class AccessTokenRefreshResult : ResultBase, IAccessTokenRefreshResult
+    public sealed class AccessTokenRefreshResult : ResultBase, IAccessTokenRefreshResult
     {
         public AccessTokenRefreshResult(ResultContainer resultContainer) : base(resultContainer)
         {
