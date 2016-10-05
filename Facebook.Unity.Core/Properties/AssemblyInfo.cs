@@ -22,5 +22,4 @@ using System.Runtime.CompilerServices;
 using System.Reflection;
 
 [assembly: AssemblyVersion("7.8.0")]
-[assembly: InternalsVisibleTo("Facebook.Unity")]
 [assembly: InternalsVisibleTo("Facebook.Unity.Internal")]

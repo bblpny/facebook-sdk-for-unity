@@ -22,8 +22,3 @@ using System.Runtime.CompilerServices;
 using System.Reflection;
 
 [assembly: AssemblyVersion("7.8.0")]
-[assembly: InternalsVisibleTo("Assembly-CSharp")]
-[assembly: InternalsVisibleTo("Facebook.Unity.Android")]
-[assembly: InternalsVisibleTo("Facebook.Unity.Arcade")]
-[assembly: InternalsVisibleTo("Facebook.Unity.IOS")]
-[assembly: InternalsVisibleTo("Facebook.Unity.Tests")]
