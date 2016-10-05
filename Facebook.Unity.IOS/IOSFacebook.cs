@@ -32,7 +32,7 @@ namespace Facebook.Unity.Mobile.IOS
         private IIOSWrapper iosWrapper;
 
         public IOSFacebook()
-            : this(GetIOSWrapper(), new CallbackManager())
+            : this(new IOSWrapper(), new CallbackManager())
         {
         }
 
@@ -296,19 +296,7 @@ namespace Facebook.Unity.Mobile.IOS
         {
             this.iosWrapper.SetShareDialogMode((int)mode);
         }
-
-        private static IIOSWrapper GetIOSWrapper()
-        {
-            Type type = System.Type.GetType("Facebook.Unity.IOS.IOSWrapper, Facebook.Unity.IOS", false);
-            if (null == type)
-            {
-                Assembly assembly = Assembly.Load("Facebook.Unity.IOS");
-                type = assembly.GetType("Facebook.Unity.IOS.IOSWrapper");
-            }
-            IIOSWrapper iosWrapper = (IIOSWrapper)Activator.CreateInstance(type);
-            return iosWrapper;
-        }
-
+		
         private static NativeDict MarshallDict(Dictionary<string, object> dict)
         {
             NativeDict res = new NativeDict();

@@ -41,6 +41,7 @@
     <Compile Include="IOSFacebook.cs" />
     <Compile Include="IOSFacebookGameObject.cs" />
     <Compile Include="IOSFacebookLoader.cs" />
+    <Compile Include="IOSWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
